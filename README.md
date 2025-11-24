@@ -25,27 +25,79 @@ Requirements
 •	Python 3.7 or later
 •	No external dependencies (uses only the Python standard library: csv, os, datetime).
 ________________________________________
-Installation
-1.	Clone this repository:
+Usage
+Run the application from the project directory:
 bash
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
-2.	Ensure you have Python 3 installed:
-bash
-python --version
+python main.py
 # or
-python3 --version
-3.	(Optional but recommended) Create and activate a virtual environment:
-bash
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS / Linux
-source venv/bin/activate
-No additional packages need to be installed.
-# Author :-
+python3 main.py
+You will see a menu like:
+text
+--- Budget Tracker Menu ---
+1. Add Income
+2. Add Expense
+3. View Summary (Balance, Total Income/Expense)
+4. View Detailed Transaction History
+5. Exit
+Enter a number from 1 to 5 to choose an action.
+1. Add income
+•	Choose option 1.
+•	Enter a description (for example, Salary, Freelance, Gift).
+•	Enter the income amount (positive number).
+•	The app will:
+o	Store the transaction as an income.
+o	Use today’s date.
+o	Save it immediately to transactions.csv.
+2. Add expense
+•	Choose option 2.
+•	Enter a description (for example, Groceries, Rent, Transport).
+•	Enter the expense amount (positive number).
+•	The app will:
+o	Store the transaction as an expense.
+o	Convert the amount to a negative value internally for correct balance calculation.
+o	Use today’s date.
+o	Save it immediately to transactions.csv.
+3. View summary
+•	Choose option 3.
+•	The app shows:
+o	Total income (sum of all positive amounts).
+o	Total expense (absolute value of sum of negative amounts).
+o	Current balance (income + expenses), colored green if non negative and red if negative in terminals that support ANSI colors.
+4. View detailed transaction history
+•	Choose option 4.
+•	The app prints all transactions sorted by date (newest first), with:
+o	Index number
+o	Date
+o	Description
+o	Type (INCOME / EXPENSE)
+o	Amount, with a + or - sign and green/red coloring.
+5. Exit
+•	Choose option 5 to exit the application gracefully.
+________________________________________
+Data storage
+•	The app uses a CSV file named transactions.csv in the project directory.
+•	Columns:
+o	date – date string in YYYY-MM-DD format
+o	type – "income" or "expense"
+o	name – text description of the transaction
+o	amount – numeric value (positive for income, negative for expense)
+•	On startup:
+o	If transactions.csv exists, it is loaded into memory.
+o	If it does not exist, the app starts with an empty list and creates the file when the first transaction is saved.
+________________________________________
+Customization ideas
+You can extend FinanceFlow with:
+•	Filtering transactions by date range or type.
+•	Category support (e.g., Food, Rent, Entertainment).
+•	Exporting monthly reports.
+•	Graphs using libraries like matplotlib or pandas.
+•	A GUI or web interface on top of the existing CSV logic.
+________________________________________
+Author
 •	Name : Naman Jayesh Gundecha
 •	Reg. No. : 25BCE10720
 •	Mail : namangundecha22@gmail.com
 •	GitHub : Naman Gundecha
+
+
 
